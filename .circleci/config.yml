@@ -5,9 +5,6 @@
 version: 2
 jobs:
   build:
-    branches:
-      only:
-        - master
     docker:
       # specify the version you desire here
       - image: circleci/node:8.0
@@ -39,11 +36,11 @@ jobs:
       # build project
       - run: npm run prod
       - run:
-        coommand: |
-          cd dist
-          git init
-          git config user.name "ivan tsai"
-          git config user.email "oscar60310@gmail.com"
-          git add .
-          git commit -m "Deploy commit $ID to github page $DATE"
-          git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages
+          coommand: |
+            cd dist
+            git init
+            git config user.name "ivan tsai"
+            git config user.email "oscar60310@gmail.com"
+            git add .
+            git commit -m "Deploy commit $ID to github page $DATE"
+            git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages
