@@ -41,6 +41,8 @@ jobs:
       - run:
           command: |
             cd dist
+            mkdir .circleci
+            cp ../.circleci/config.yml ./.circleci
             git init
             git config user.name "ivan tsai"
             git config user.email "oscar60310@gmail.com"
