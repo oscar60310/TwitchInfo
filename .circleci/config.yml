@@ -37,7 +37,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # build project
-      - run: npm run prod
+      - run: npm run page
       - run:
         coommand: |
           cd dist

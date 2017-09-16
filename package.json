@@ -7,6 +7,7 @@
     "start": "ng serve",
     "build": "ng build",
     "prod": "ng build --prod",
+    "page": "ng build --prod --base-href /TwitchInfo",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
