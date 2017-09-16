@@ -35,10 +35,7 @@ jobs:
         
       # build project
       - run: npm run prod
-  deployment:
-    staging:
-      branch: master
-      commands:
-        - ./deploy.sh
+
+      - run: ./deploy.sh
 
 
