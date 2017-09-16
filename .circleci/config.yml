@@ -5,6 +5,9 @@
 version: 2
 jobs:
   build:
+    branches:
+      only:
+        - master
     docker:
       # specify the version you desire here
       - image: circleci/node:8.0
@@ -34,8 +37,8 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # build project
-      - run: npm run prod
       steps:
+        - run: npm run prod
         - run: cd dist
         - run: git init
         - run: git config user.name "ivan tsai"
