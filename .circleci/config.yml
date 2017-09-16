@@ -35,8 +35,5 @@ jobs:
         
       # build project
       - run: npm run prod
-  deployment:
-    production:
-      branch: master
-      commands:
-        - ./deploy.sh   
+      - run: cd dist
+      - run: git init
