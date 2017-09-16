@@ -35,7 +35,8 @@ jobs:
         
       # build project
       - run: npm run prod
-      - run: chmod -x ./deploy.sh
-      - run: ./deploy.sh
-
-
+  deployment:
+    production:
+      branch: master
+      commands:
+        - ./deploy.sh   
