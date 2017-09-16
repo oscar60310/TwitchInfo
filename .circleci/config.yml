@@ -35,8 +35,10 @@ jobs:
         
       # build project
       - run: npm run prod
-
-      # update github page
-      - bash ./deplay.sh
+  deployment:
+    staging:
+      branch: master
+      commands:
+        - ./deploy.sh
 
 
