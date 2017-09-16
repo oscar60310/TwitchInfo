@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 cd dist
+echo "OK"
 git init
 git config user.name "ivan tsai"
 git config user.email "oscar60310@gmail.com"
