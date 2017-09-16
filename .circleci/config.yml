@@ -41,5 +41,5 @@ jobs:
       - run: git config user.email "oscar60310@gmail.com"
       - run: git add .
       - run: git commit -m "Deploy commit $ID to github page $DATE"
-      - run: git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages
+      - run: git push --force --quiet "git@github.com:oscar60310/TwitchInfo.git" master:gh-pages
 
