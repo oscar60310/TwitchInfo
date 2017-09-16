@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+echo "START"
 cd dist
 echo "OK"
 git init
