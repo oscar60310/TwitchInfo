@@ -1,0 +1,19 @@
+{
+  "name": "twitchinfo",
+  "version": "1.0.0",
+  "description": "twitch streaming widget",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oscar60310/TwitchInfo.git"
+  },
+  "author": "oscar60310",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oscar60310/TwitchInfo/issues"
+  },
+  "homepage": "https://github.com/oscar60310/TwitchInfo#readme"
+}
