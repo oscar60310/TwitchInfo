@@ -1,0 +1,25 @@
+<div class="container out">
+  <h2>產生新的元件</h2>
+  <form #dataForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="twitchName">Twitch Name</label>
+      <input [(ngModel)]="data.name" name="name" type="text" class="form-control" id="twitchName" placeholder="Enter your twitch username"
+        required>
+    </div>
+    <div class="form-group">
+      <label for="twitchapp">Twitch APP ID</label>
+      <input [(ngModel)]="data.twitchId" name="twitchId" ype="text" class="form-control" id="twitchapp" placeholder="Enter your twitch app id"
+        required>
+      <small id="emailHelp" class="form-text text-muted">
+        必須要使用 <a href='https://dev.twitch.tv/dashboard/apps' target='_blank'>Twitch APP</a> ID 來獲得 API 權限
+      </small>
+    </div>
+    <button type="submit" class="btn btn-primary">提交</button>
+    
+    <div class="form-group out">
+      <label for="twitchapp">專屬連結</label>
+      <input [(ngModel)]="data.url" name="url" class="form-control" type="text" placeholder="Url" readonly>
+    </div>
+  </form>
+  {{data | json}}
+</div>
