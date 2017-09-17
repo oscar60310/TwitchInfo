@@ -1,8 +1,15 @@
 <div class='box'>
   <div>
     <span class='twitch-name'>{{data.twitchName}}</span>
-    <span class='time'>{{data.time}}</span>
+    <span class='twitch-game'>{{data.game}}</span>
+    <span class='time'>
+      <span *ngIf='clock > 0 && clock < 90'  [@moveInOut]>{{data.time}}</span>
+      <span *ngIf='clock > 90 && clock < 100' [@moveInOut]>開台時間 {{data.openTimeMin}} 分鐘</span>
+    </span>
   </div>
 
   <div></div>
 </div>
+<!--
+{{data | json}} {{clock}}
+-->
