@@ -8,8 +8,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./show.component.sass']
 })
 export class ShowComponent implements OnInit {
-  private setting: any;
-  private data = {
+  setting: any;
+  data = {
     twitchName: '',
     time: '2017/09/09 12:33:44'
   };
