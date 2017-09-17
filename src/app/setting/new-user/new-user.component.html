@@ -14,12 +14,17 @@
         必須要使用 <a href='https://dev.twitch.tv/dashboard/apps' target='_blank'>Twitch APP</a> ID 來獲得 API 權限
       </small>
     </div>
-    <button type="submit" class="btn btn-primary">提交</button>
-    
-    <div class="form-group out">
-      <label for="twitchapp">專屬連結</label>
-      <input [(ngModel)]="data.url" name="url" class="form-control" type="text" placeholder="Url" readonly>
+    <div class="form-group">
+      <label for="twitchapp">中央氣象局資料授權 API Key</label>
+      <input [(ngModel)]="data.CWB" name="CWB" ype="text" class="form-control" id="twitchapp" placeholder="Enter your CWB key">
+      <small id="emailHelp" class="form-text text-muted">
+        用來取得氣象資料，可以在 <a href='https://opendata.cwb.gov.tw/usages' target="_blank">氣象局 open data</a> 網站上取得
+      </small>
     </div>
+    <button type="submit" class="btn btn-primary">提交</button>
   </form>
-  {{data | json}}
+  <div class="form-group out">
+    <label for="twitchapp">專屬連結</label>
+    <input [(ngModel)]="url" name="url" class="form-control" type="text" placeholder="Url" readonly>
+  </div>
 </div>

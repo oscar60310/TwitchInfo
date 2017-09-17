@@ -11,16 +11,20 @@ export class NewUserComponent implements OnInit {
   data = {
     name: '',
     twitchId: 'bfntqd4o0odvq9c4inycycoy4ku4kaf',
-    url: ''
+    CWB: '',
+    id: '',
   };
+  url = '';
   constructor(private twitch: TwitchService) { }
 
   ngOnInit() {
   }
   async onSubmit() {
     try {
-      const id = await this.twitch.nameToId(this.data.name, this.data.twitchId);
-      this.data.url = id;
+      const profile = await this.twitch.getProfileByName(this.data.name, this.data.twitchId);
+      this.data.id = profile.id;
+      const b64 = btoa(JSON.stringify(this.data));
+      this.url = `${window.location.protocol}//${window.location.host}${window.location.pathname}#/show/${b64}`;
     } catch (e) {
 
     }
