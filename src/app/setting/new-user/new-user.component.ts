@@ -12,6 +12,7 @@ export class NewUserComponent implements OnInit {
     name: '',
     twitchId: 'bfntqd4o0odvq9c4inycycoy4ku4kaf',
     CWB: '',
+    id: '',
   };
   url = '';
   constructor(private twitch: TwitchService) { }
@@ -20,6 +21,8 @@ export class NewUserComponent implements OnInit {
   }
   async onSubmit() {
     try {
+      this.data.id = await this.twitch.getTwitchId(this.data);
+      console.log(this.data);
       const b64 = btoa(JSON.stringify(this.data));
       this.url = `${window.location.protocol}//${window.location.host}${window.location.pathname}#/show/${b64}`;
     } catch (e) {

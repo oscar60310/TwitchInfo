@@ -1,15 +1,51 @@
 <div class='box'>
   <div>
     <span class='twitch-name'>{{data.twitchName}}</span>
-    <span class='twitch-game'>{{data.game}}</span>
     <span class='time'>
-      <span *ngIf='clock > 0 && clock < 90'  [@moveInOut]>{{data.time}}</span>
-      <span *ngIf='clock > 90 && clock < 100' [@moveInOut]>開台時間 {{data.openTimeMin}} 分鐘</span>
+      <span *ngIf='clock < 90'  [@moveInOut]>{{data.time}}</span>
+    <span *ngIf='clock >= 90' [@moveInOut]>開台時間 {{data.openTimeMin}} 分鐘</span>
     </span>
   </div>
+  <div class='info'>
+    <div class='weather w-clody'>
+        <div class='city'>高雄市</div>
+        <div class='des'>多雲時晴</div>
+        <div class='deg up'>35°C</div>
+        <div class='deg down'>35%</div>
+    </div>
+    <div class='gaming'>
+      <div class='twitch-game' *ngIf='info===0' [@moveInOut]>
+        <div>正在遊玩</div>
+        <div>{{data.game}}</div>
+      </div>
+      <div class='follow' *ngIf='info===1' [@moveInOut]>
+        <div style='margin-top: 10px'>
+          <div style='font-size: .9rem;'>追隨人數</div>
+          <div style='font-size: 2rem;'>{{data.followers}}</div>
+        </div>
+        <div class='ver'></div>
+        <div style='margin-top: 30px; margin-left: 10px;font-size: 1rem;'>
+          <div [@moveRight]>{{data.lastFollow}}，感謝追隨！</div>
+        </div>
+      </div>
+      <div class='twitch-title' *ngIf='info===2' [@moveInOut]>
+        <div>{{data.title}}</div>
+      </div>
+      <div class='follow' *ngIf='info===3' [@moveInOut]>
+        <div style='margin-top: 10px;width: 5em'>
+          <div style='font-size: .9rem;width:100%;text-align:center;'>目前觀看人數</div>
+          <div style='font-size: 2rem;width:100%;text-align:center;'>{{data.viewers}}</div>
+        </div>
+        <div class='ver'></div>
+        <div style='margin-top: 10px;margin-left: 10px;'>
+          <div style='font-size: .9rem;'>開台時間</div>
+          <div style='font-size: 2rem;'>{{data.openTimeMin}} 分鐘</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <div></div>
-</div>
+</div>{{data | json}} {{clock}}
 <!--
 {{data | json}} {{clock}}
 -->
