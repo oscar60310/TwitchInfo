@@ -7,11 +7,14 @@
     </span>
   </div>
   <div class='info'>
-    <div class='weather w-clody'>
-        <div class='city'>高雄市</div>
-        <div class='des'>多雲時晴</div>
-        <div class='deg up'>35°C</div>
-        <div class='deg down'>35%</div>
+    <div class='weather w-{{data.weather.type}}' *ngIf='weatherShow' [@moveInOut]>
+      <div class='city' [@moveRight]>{{data.weather.city}}</div>
+      <div class='des' [@moveRight]>{{data.weather.des}}</div>
+      <div class='deg up'>{{data.weather.deg}}°C</div>
+      <div class='deg down'>{{data.weather.humidity}}%</div>
+    </div>
+    <div *ngIf='!weatherShow' class='weather'>
+
     </div>
     <div class='gaming'>
       <div class='twitch-game' *ngIf='info===0' [@moveInOut]>
@@ -45,7 +48,7 @@
     </div>
   </div>
 
-</div>{{data | json}} {{clock}}
+</div>
 <!--
 {{data | json}} {{clock}}
 -->

@@ -51,13 +51,15 @@ export class ShowComponent implements OnInit {
     lastFollow: '',
     weather: {
       deg: 0,
-      rain: 0,
+      humidity: 0,
       city: '',
       des: '',
-      type: 'none'
+      type: 'sun'
     },
     cwb: '',
   };
+  weathers;
+  weatherShow = false;
   clock = 0;
   constructor(
     private route: ActivatedRoute,
@@ -114,6 +116,28 @@ export class ShowComponent implements OnInit {
     setTimeout(this.getGame.bind(this), 1000 * 60 * 5);
   }
   async getWeather() {
-    console.log(this.weather.getWeather(this.data.cwb));
+    this.weathers = await this.weather.getWeather(this.data.cwb);
+    if (this.weathers.length > 0) {
+      this.changeWeather(0);
+    }
+
+  }
+  changeWeather(n) {
+    this.weatherShow = false;
+    setTimeout(() => {
+      this.data.weather.city = this.weathers[n].city;
+      this.data.weather.deg = this.weathers[n].temp;
+      this.data.weather.des = this.weathers[n].des;
+      this.data.weather.humidity = this.weathers[n].humidity;
+      this.data.weather.type = this.weathers[n].wcode;
+
+      this.weatherShow = true;
+      if (n + 1 < this.weathers.length) {
+        setTimeout(this.changeWeather.bind(this), 5000, ++n);
+      } else {
+        setTimeout(this.changeWeather.bind(this), 5000, 0);
+      }
+    }, 0);
+
   }
 }
