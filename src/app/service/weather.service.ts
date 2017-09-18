@@ -56,7 +56,7 @@ export class WeatherService {
       let ids = '';
       this.cityList.forEach(c => ids += c.Code + ',');
       ids = ids.slice(0, ids.length - 1);
-      this.jsonp.get(`http://api.openweathermap.org/data/2.5/group?lang=zh_tw&id=${ids}&appid=${key}&units=metric&callback=JSONP_CALLBACK`)
+      this.jsonp.get(`https://api.openweathermap.org/data/2.5/group?lang=zh_tw&id=${ids}&appid=${key}&units=metric&callback=JSONP_CALLBACK`)
         .subscribe(d => {
           resolve(this.recordToData(d['_body']));
         });
