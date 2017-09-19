@@ -60,6 +60,7 @@ export class ShowComponent implements OnInit {
   };
   weathers;
   weatherShow = false;
+  streaming = false;
   clock = 0;
   constructor(
     private route: ActivatedRoute,
@@ -83,11 +84,16 @@ export class ShowComponent implements OnInit {
     const now = new Date();
     this.data.time = `${now.toLocaleDateString()} ${now.toTimeString().split(' ')[0]}`;
     this.data.openTimeMin = Math.floor(((new Date()).getTime() - this.data.openTime) / 1000 / 60);
-    if (this.clock >= 100) {
-      this.clock = 0;
+    if (this.streaming) {
+      if (this.clock >= 100) {
+        this.clock = 0;
+      } else {
+        this.clock += 1;
+      }
     } else {
-      this.clock += 1;
+      this.clock = 0;
     }
+
 
     const tick = this.clock % 20;
     if (tick < 5) {
@@ -105,7 +111,9 @@ export class ShowComponent implements OnInit {
     const stream = await this.twitch.getStreamDetail(this.setting);
     if (stream == null) {
       this.data.game = '尚未直播';
+      this.streaming = false;
     } else {
+      this.streaming = true;
       this.data.followers = stream.channel.followers;
       this.data.title = stream.channel.status;
       this.data.viewers = stream.viewers;
